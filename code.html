@@ -1,0 +1,117 @@
+<!-- insert data(php) -->
+ <!-- insert php data -->
+ <?php
+ require_once('database.php');
+ $nameErr = $numErr = $addErr = $websiteErr = "";
+ $res="" ;
+
+$eligibility = implode(',', $_POST['eligibility']);
+ 
+ if(isset($_POST) & !empty($_POST)){
+  if (empty($_POST["CompanyName"])) {
+    $Companynameerr = "CompanyName is required";
+  } else {
+    $Companyname = $database->sanitize($_POST['CompanyName']);     //1-Name Data
+  }
+  if (empty($_POST["JobTitle"])) {
+    $JobTitleErr = "Job Title is required";
+  } else {
+    $JobTitle = $database->sanitize($_POST['JobTitle']);   //2-Number Data
+  }
+  // if (empty($_POST["address"])) {
+  //   $addErr = "Address is required";
+  // } 
+  if (empty($_POST["eligibility"])) {
+    $eligibilityErr = "Eligibiity is required";
+  } 
+  else {
+    $eligibility = $database->sanitize($eligibility);     //3-emaildata
+  }
+  $joblocation =  $_POST['joblocation'];
+  $state =  $_POST['state'];                       //4-dental-problem-data
+  $totalvacancies = $_POST['totalvacancies'];
+  $dateadded = $_POST['dateadded'];
+  $lastdatetoapply = $_POST['lastdate'];
+  $typeofjob = $_POST['typeofjob'];
+  $Keywords = $_POST['Keywords'];                        //5-gender-data (boolean)
+  
+if( $Companyname!="" | $JobTitle!="" | $eligibility !="" | $Keywords !=""){
+  $res = $database->create_jobdetail($Companyname,$JobTitle,$typeofjob,$eligibility,$joblocation,$state,
+  $totalvacancies,$dateadded,$lastdatetoapply,$Keywords);}
+	 if($res){
+    echo '<div class="alert alert-success alert-dismissable" id="flash-msg">
+    <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+    <h4><i class="icon fa fa-check"></i>We will keep in touch</h4>
+    </div>';
+     
+	 }else{
+    echo '<div class="alert alert-success alert-dismissable" id="flash-msg">
+    <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+    <h4><i class="icon fa fa-check"></i>Please fill in details.</h4>
+    </div>'; }
+}
+?>
+<!-- insert data(php) -->
+
+<!-- editcode -->
+<?php
+if (isset($_GET["edit"])) {
+    $id = (int) $_GET["edit"];
+    $getfile = file_get_contents('dataa.json');
+    $jsonfile = json_decode($getfile, true);
+    // $jsonfile = $jsonfile["jobdata"];
+    $jsonfile = $jsonfile[$id];
+}
+
+if (isset($_POST["id"])) {
+    $id = (int) $_POST["id"];
+    $getfile = file_get_contents('dataa.json');
+    $all = json_decode($getfile, true);
+    // $jsonfile = $all["jobdata"];
+    $jsonfile = $jsonfile[$id];
+
+    $post["CompanyName"] = isset($_POST["CompanyName"]) ? $_POST["CompanyName"] : "";
+    $post["JobTitle"] = isset($_POST["JobTitle"]) ? $_POST["JobTitle"] : "";
+    $post["Eligibility"] = isset($_POST["Eligibility"]) ? $_POST["Eligibility"] : "";
+    $post["JobLocation"] = isset($_POST["JobLocation"]) ? $_POST["JobLocation"] : "";
+    $post["TotalVacancies"] = isset($_POST["TotalVacancies"]) ? $_POST["TotalVacancies"] : "";
+    $post["jobdateadded"] = isset($_POST["jobdateadded"]) ? $_POST["jobdateadded"] : "";
+    $post["joblastdate"] = isset($_POST["joblastdate"]) ? $_POST["joblastdate"] : "";
+    $post["State"] = isset($_POST["State"]) ? $_POST["State"] : "";
+    $post["tags"] = isset($_POST["tags"]) ? $_POST["tags"] : "";
+    $post["typeofjob"] = isset($_POST["typeofjob"]) ? $_POST["typeofjob"] : "";
+    $post["MainLink"] = isset($_POST["MainLink"]) ? $_POST["MainLink"] : "";
+    $post["pdflink"] = isset($_POST["pdflink"]) ? $_POST["pdflink"] : "";
+    $post["Pay"] = isset($_POST["Pay"]) ? $_POST["Pay"] : "";
+    $post["lastdateoffee"] = isset($_POST["lastdateoffee"]) ? $_POST["lastdateoffee"] : "";
+
+    if ($jsonfile) {
+        unset($all["jobdata"][$id]);
+        $all["jobdata"][$id] = $post;
+        $all["jobdata"] = array_values($all["jobdata"]);
+        file_put_contents("data.json", json_encode($all));
+    }
+    header("Location: ./index.php");
+}
+?>
+<?php if (isset($_GET["edit"])): ?>
+    <form action="./edit.php" method="POST">
+        <input type="hidden" value="<?php echo $id ?>" name="id"/>
+        <input type="text" value="<?php echo $jsonfile["CompanyName"] ?>" name="CompanyName"/>
+        <input type="text" value="<?php echo $jsonfile["JobTitle"] ?>" name="JobTitle"/>
+        <input type="text" value="<?php echo $jsonfile["Eligibility"] ?>" name="Eligibility"/>
+        <input type="text" value="<?php echo $jsonfile["JobLocation"] ?>" name="JobLocation"/>
+        <input type="text" value="<?php echo $jsonfile["TotalVacancies"] ?>" name="TotalVacancies"/>
+        <input type="text" value="<?php echo $jsonfile["jobdateadded"] ?>" name="jobdateadded"/>
+        <input type="text" value="<?php echo $jsonfile["joblastdate"] ?>" name="joblastdate"/>
+        <input type="text" value="<?php echo $jsonfile["State"] ?>" name="State"/>
+        <input type="text" value="<?php echo $jsonfile["tags"] ?>" name="tags"/>
+        <input type="text" value="<?php echo $jsonfile["typeofjob"] ?>" name="typeofjob"/>
+        <input type="text" value="<?php echo $jsonfile["MainLink"] ?>" name="MainLink"/>
+        <input type="text" value="<?php echo $jsonfile["pdflink"] ?>" name="pdflink"/>
+        <input type="text" value="<?php echo $jsonfile["Pay"] ?>" name="Pay"/>
+        <input type="text" value="<?php echo $jsonfile["lastdateoffee"] ?>" name="lastdateoffee"/>
+        <input type="submit" method="post"/>
+    </form>
+<?php endif; ?>
+<!-- editcode -->
