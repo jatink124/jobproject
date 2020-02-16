@@ -1,25 +1,5 @@
 [
     {
-        "id": 0,
-        "CompanyName": "SAIL",
-        "JobTitle": "Sail Manager Requirement",
-        "Eligibility": "",
-        "JobLocation": "",
-        "TotalVacancies": "",
-        "jobdateadded": "14-12-2019",
-        "joblastdate": "04-01-2020",
-        "State": "",
-        "tags": "steel,mechanical",
-        "typeofjob": "",
-        "MainLink": "https:\/\/www.sailcareers.com\/",
-        "pdflink": "https:\/\/www.sailcareers.com\/media\/uploads\/Advt_37_20_11_19_English.pdf",
-        "Pay": "",
-        "lastdateoffee": "",
-        "howtoapply": "",
-        "imagelink": "",
-        "main_intro": ""
-    },
-    {
         "id": "1",
         "CompanyName": "Assam Public Service Commission",
         "JobTitle": "Fishery Development Officer",
@@ -35,6 +15,7 @@
         "pdflink": "http:\/\/apsc.nic.in\/advt_2019\/Advt_08-2019_30Dec2019.pdf",
         "Pay": "Rs. 30,000\/-1,10,000\/-PB-4 with Grade Pay of Rs.12,700\/-",
         "lastdateoffee": "",
+        "status": "",
         "State": "Assam",
         "howtoapply": "",
         "imagelink": "govtjob_assam_public_service_commition.png",
@@ -56,6 +37,7 @@
         "pdflink": "https:\/\/drive.google.com\/file\/d\/1jM5RS9aFB_1RCCQq4kGNsoXyKSVm_pTh\/edit",
         "Pay": "",
         "lastdateoffee": "",
+        "status": "",
         "State": "Punjab",
         "howtoapply": "",
         "imagelink": "govt_job_intervew_Punjab_public service_commission.png",
@@ -77,6 +59,7 @@
         "pdflink": "https:\/\/www.mscwb.org\/home\/download\/THh2UHN3eGdTcXdqZWlYeWwraWdmMXB0R2FDdGNMMkNsWndidWZrTFYzMkR1MFIwT09vbUxzZ0lrNzNKaFU0OEhKaFNTUVlOa3BnMTRwYTlBelU4QVkydTBkd2RVQSttUnlKSjc1MGtTT29nTXlnclU2V3ZDcjRQaWd1em5YMXc=",
         "Pay": "PB-4A Rs.15,600-42000\/- Grade Pay rs 5,400",
         "lastdateoffee": "",
+        "status": "",
         "State": "West bengal",
         "howtoapply": "",
         "imagelink": "govt_job_WestBengal_Municipal_Service_Commission.png",
@@ -98,6 +81,7 @@
         "pdflink": "https:\/\/www.mscwb.org\/home\/download\/THh2UHN3eGdTcXdqZWlYeWwraWdmMXB0R2FDdGNMMkNsWndidWZrTFYzMkR1MFIwT09vbUxzZ0lrNzNKaFU0OEhKaFNTUVlOa3BnMTRwYTlBelU4QVkydTBkd2RVQSttUnlKSjc1MGtTT29nTXlnclU2V3ZDcjRQaWd1em5YMXc=",
         "Pay": "PB-4 Rs.9000-40500\/- Grade Pay rs 4,500",
         "lastdateoffee": "",
+        "status": "",
         "State": "westbengal",
         "howtoapply": "",
         "imagelink": "govt_job_WestBengal_Municipal_Service_Commission.png",
@@ -119,6 +103,7 @@
         "pdflink": "https:\/\/www.esic.nic.in\/attachments\/recruitmentfile\/206c82a60e4cda6f5b92d7151e0b3264.pdf",
         "Pay": "",
         "lastdateoffee": "",
+        "status": "",
         "State": "",
         "howtoapply": "",
         "imagelink": "govt_job_esic.jpg",
@@ -140,6 +125,7 @@
         "pdflink": "https:\/\/apps.shar.gov.in\/RMT\/Advt_04_2019.pdf",
         "Pay": "from image",
         "lastdateoffee": "",
+        "status": "",
         "State": "Andhra Pradesh",
         "howtoapply": "",
         "imagelink": "govt_job_satish_dhawan_space_center.png",
@@ -161,6 +147,8 @@
         "pdflink": "https:\/\/ojas.gujarat.gov.in\/AdvtDetailFiles\/GPSC_201920_125.pdf",
         "Pay": " According to R.O.P 2016, Pay Matrix level No.-8, Rs. 44900- 142400\/-",
         "lastdateoffee": "",
+        "status": "",
+        
         "State": "Gujrat",
         "howtoapply": "",
         "imagelink": "govt_gujrat_education_service.png",
@@ -182,6 +170,8 @@
         "pdflink": "http:\/\/recruitment.amtron.in\/impds\/resources\/pdf\/web_adv.pdf;jsessionid=8A3CAFF1861DDCF5B43FA485929A9D69",
         "Pay": "",
         "lastdateoffee": "",
+        "status": "",
+       
         "State": "Assam",
         "howtoapply": "",
         "imagelink": "govt_job_assam_electronics_development_corporation_ltd.png",
@@ -276,6 +266,8 @@
         "pdflink": "http:\/\/www.hpsssb.hp.gov.in\/UploadFiles\/35%20of%203%20of%202019.pdf",
         "Pay": "",
         "lastdateoffee": "",
+        "status": "",
+        "imagelink": "12_",
         "State": "Himachal",
         "howtoapply": "",
         "main_intro": ""
@@ -297,6 +289,7 @@
         "Pay": "",
         "lastdateoffee": "",
         "status": "",
+        
         "imagelink": "12_",
         "State": "",
         "howtoapply": "",
@@ -322,9 +315,11 @@
         "pdflink": "https:\/\/www.npcil.nic.in\/WriteReadData\/userfiles\/file\/Advt_07012020_01.pdf",
         "Pay": "",
         "lastdateoffee": "",
+        
         "status": "",
         "imagelink": "govt_job_nuclear_corporation",
         "State": "Gujrat",
-        "howtoapply": ""
+        "howtoapply": "",
+        "main_intro": ""
     }
 ]

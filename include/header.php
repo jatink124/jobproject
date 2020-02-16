@@ -1,73 +1,31 @@
-<!-- read json data -->
-<?php
-    $data = file_get_contents("dataa.json");  
-   $data = json_decode($data, true);  
-  // $cn = $data[0]["CompanyName"];
-  //  $len = count($data);
-  
-  //  for($x=0;$x<=$len;$x++)  
-  //  {  
-  //     for($y=0;$y<=$len)
-  //   $data[$x][cn]= $data[$x]["CompanyName"];  
-  //   echo $data[$x][cn];
- 
-    
-  //   }  
-  $i=0;$j=0;$initelig=0;$initstart=0;$initlast=0;$initimglink=0;$initmainintro=0;$initmainlink=0;$initpdflink=0;
-  foreach ($data as $key => $vall) {
-    foreach($vall as $_key => $val){
-   if($_key=="xyz"){
-    foreach($val as $key => $valll){
-      //  echo $valll;
-     }
-   }
-   else{
-     if($_key=="CompanyName"){
-       $cn[$i] = $val;
-       $i++;
-      }
-      elseif($_key=="JobTitle"){
-        $jt[$j] = $val;
-        $j++;
-       }
-       elseif($_key=="Eligibility"){
-        $eligb[$initelig] = $val;
-        $initelig++;
-       }
-       elseif($_key=="imagelink"){
-        $imagelink[$initimglink] = $val;
-        $initimglink++;
-       }
-       elseif($_key=="main_intro"){
-        $mainintro[$initmainintro] = $val;
-        $initmainintro++;
-       }
-       elseif($_key=="MainLink"){
-        $mainlink[$initmainlink] = $val;
-        $initmainlink++;
-       }
-       elseif($_key=="pdflink"){
-        $mainpdflink[$initpdflink] = $val;
-        $initpdflink++;
-       }
-     }
-    }
 
-}
-
-
- ?> 
 <!doctype html>
 <html lang="en">
   <head>
+ <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-J6LKDHH5Z9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-J6LKDHH5Z9');
+</script>
     <!-- Required meta tags -->
     <meta charset="utf-8">
+    <meta name="description" content="catchyourjob.in is a leading job website for freshers and experienced employers
+    and students">
+  <meta name="keywords" content="recruitment,jobs,current affars,job alert,govtjobs 2020">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <title>Hello, world!</title>
+    <link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" rel="stylesheet">
+    <link href="dist/bootstrap-table.min.css" rel="stylesheet"/>
+    <link href="dist/extentions/filter-control/bootstrap-table-filter-control.min.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.1/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet">
+<link href="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.css" rel="stylesheet">
+    <title>Latest Jobs alerts and results</title>
     <style>
    .navbar-light .navbar-nav .nav-link {
  
@@ -85,5 +43,23 @@ li.nav-item {
     height: 100px;
 }
       </style>
+  <style>
+    p.card-text.show-read-more .more-text{
+        display: none;
+    }
+</style>
+ <style>
+ .navbar-dark .navbar-brand {
+  font-size: xx-large;
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00de, 0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de, 0 0 150px #ff00de;
+}
+ /* menu */
+ .navbar-dark .navbar-nav .nav-link {
+    font-size: larger!important;
+   color: floralwhite!important;
+}
+ /* menu */
+ </style>
+  
   </head>
   <body>

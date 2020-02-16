@@ -1,0 +1,26 @@
+RewriteEngine on
+
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteCond %{REQUEST_FILENAME}\.php -f
+
+RewriteRule ^index index.php
+RewriteRule  ^statesarkarijob ./state.php
+RewriteRule  ^sarkarijob ./boardjob.php
+RewriteRule  ^jobdetail ./Detail_job.php
+RewriteRule  ^login ./authentication/login.php
+RewriteRule  ^adddepartment ./phpcrudmodal/index.php
+RewriteRule  ^addjob ./pages/add_job.php
+
+RewriteRule  ^checkdata ./pages/check_data.php
+
+RewriteRule  ^adddata ./php_mysql_edit/index.php
+
+
+
+
+
+
+
+  
+

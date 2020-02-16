@@ -1,100 +1,55 @@
+<?php
+// Start the session
+session_start();
+?>
+<?php include 'pages/getting_data_json.php' ?>
 <?php include 'include/header.php' ?>
-<?php include 'include/navigation.php' ?>
- 
+<?php include 'include/indexnavigation.php' ?>
+<?php include 'php_crud/indexdisplay.php' ?>
+
+<!-- show data -->
+<style>
+.card-title {
+    margin-bottom:.1rem!important;
+    height: 60px!important;
+    overflow-y: auto!important;
+}
+p.card-text {
+    height: auto;
+    overflow-y: hidden;
+}
+</style>
+<!-- show data -->
 
   <div class="container">
-<div class="row">
-    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"><div class="card">
-  <img class="card-img-top" src="images/<?php echo $imagelink[1]?>" alt="Assam_Government_job_2020">
-  <div class="card-body">
-    <h5 class="card-title"><?php echo $cn[1]; ?></h5>
-    <p class="card-text"><?php echo $mainintro[1]; ?></p>
-    <a href="<?php echo $mainlink[1] ?>" target="_blank" class="btn btn-primary">Main Link</a>
-    <a href="<?php echo $mainpdflink[1] ?>" target="_blank" class="btn btn-primary">Pdf Link</a>
-  </div>
-</div></div>
-<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"><div class="card">
-  <img class="card-img-top" src="images/<?php echo $imagelink[2]?>" alt="Assam_Government_job_2020">
-  <div class="card-body">
-    <h5 class="card-title"><?php echo $cn[2]; ?></h5>
-    <p class="card-text"><?php echo $mainintro[2]; ?></p>
-    <a href="<?php echo $mainlink[2] ?>" target="_blank" class="btn btn-primary">Main Link</a>
-    <a href="<?php echo $mainpdflink[2] ?>" target="_blank" class="btn btn-primary">Pdf Link</a>
-  </div>
-</div></div>
-    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"><div class="card">
-    <img class="card-img-top" src="images/<?php echo $imagelink[3]?>" alt="Assam_Government_job_2020">
-  <div class="card-body">
-    <h5 class="card-title"><?php echo $cn[3]; ?></h5>
-    <p class="card-text"><?php echo $mainintro[3]; ?></p>
-    <a href="<?php echo $mainlink[3] ?>" target="_blank" class="btn btn-primary">Main Link</a>
-    <a href="<?php echo $mainpdflink[3] ?>" target="_blank" class="btn btn-primary">Pdf Link</a>
-  </div>
-</div>
-</div>
-
-
- </div>
-
- <div class="row">
+  <?php $initi=0;$k=3;$n=0;$count=($count/3)?>
+  <?php  for($i=0;$i<=($count);$i++){if (array_key_exists($initi,$imagelink)){?>
+  <div class="row">
+  <?php for($j=$initi;$j<$k;$j++)
+      {if (array_key_exists($n,$id)){?>
   <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"><div class="card">
-    <img class="card-img-top" src="images/<?php echo $imagelink[4]?>" alt="Assam_Government_job_2020">
-      <div class="card-body">
-        <h5 class="card-title"><?php echo $cn[4]; ?></h5>
-        <p class="card-text"><?php echo $mainintro[4]; ?></p>
-        <a href="<?php echo $mainlink[4] ?>" target="_blank" class="btn btn-primary">Main Link</a>
-        <a href="<?php echo $mainpdflink[4] ?>" target="_blank" class="btn btn-primary">Pdf Link</a>
-      </div>
-    </div>
-    </div> 
+<?php $filename = "images/".trim($imagelink[$j])?>
+ <?php  if(file_exists($filename))
+{
+  $imagelink[$j] = $imagelink[$j];         //if image not found this will display
+ } else{$imagelink[$j] = "default.png";}?>
+  <img class="card-img-top" data-src="images/<?php echo $imagelink[$j]?>" alt="<?php echo $tags[$j] ?>">
+  <div class="card-body">
   
-  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"><div class="card">
-  <img class="card-img-top" src="images/<?php echo $imagelink[5]?>" alt="Assam_Government_job_2020">
-  <div class="card-body">
-    <h5 class="card-title"><?php echo $cn[5]; ?></h5>
-    <p class="card-text"><?php echo $mainintro[5]; ?></p>
-    <a href="<?php echo $mainlink[5] ?>" target="_blank" class="btn btn-primary">Main Link</a>
-    <a href="<?php echo $mainpdflink[5] ?>" target="_blank" class="btn btn-primary">Pdf Link</a>
+    <h5 class="card-title"><?php echo $postname[$j]; ?></h5>
+    <p class="card-text show-read-more"> <?php echo $mainintro[$j]; ?></p>
+   <span><h6>Last Date to apply:</h6><p><b><?php echo $ldtapply[$j]; ?></b></p></span>
+    <a id=<?php echo $id[$j]?> href="jobdetail" target="_blank" class="btn btn-primary idex">View Details</a>
+    <a href="<?php echo $MainLink[$j] ?>" target="_blank" class="btn btn-primary btn-sm">Main Link</a>
+    <a href="<?php echo $pdflink[$j] ?>" target="_blank" class="btn btn-primary btn-sm">Pdf Link</a>
   </div>
 </div></div>
-<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"><div class="card">
-  <img class="card-img-top" src="images/<?php echo $imagelink[6]?>" alt="Assam_Government_job_2020">
-  <div class="card-body">
-    <h5 class="card-title"><?php echo $cn[6]; ?></h5>
-    <p class="card-text"><?php echo $mainintro[6]; ?></p>
-    <a href="<?php echo $mainlink[6] ?>" target="_blank" class="btn btn-primary">Main Link</a>
-    <a href="<?php echo $mainpdflink[6] ?>" target="_blank" class="btn btn-primary">Pdf Link</a>
-  </div>
-</div></div>
-  
+<?php $initi=$j;$n=$initi+1; }} ?>
 </div>
-<div class="row">
-  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"><div class="card">
-    <img class="card-img-top" src="images/<?php echo $imagelink[7]?>" alt="Assam_Government_job_2020">
-  <div class="card-body">
-    <h5 class="card-title"><?php echo $cn[7]; ?></h5>
-    <p class="card-text"><?php echo $mainintro[7]; ?></p>
-    <a href="<?php echo $mainlink[7] ?>" target="_blank" class="btn btn-primary">Main Link</a>
-    <a href="<?php echo $mainpdflink[7] ?>" target="_blank" class="btn btn-primary">Pdf Link</a>
-  </div>
-</div>
-</div>
-  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"><div class="card">
-    <img class="card-img-top" src="images/<?php echo $imagelink[8]?>" alt="Assam_Government_job_2020">
-      <div class="card-body">
-        <h5 class="card-title"><?php echo $cn[8]; ?></h5>
-        <p class="card-text"><?php echo $mainintro[8]; ?></p>
-        <a href="<?php echo $mainlink[8] ?>" target="_blank" class="btn btn-primary">Main Link</a>
-        <a href="<?php echo $mainpdflink[8] ?>" target="_blank" class="btn btn-primary">Pdf Link</a>
-      </div>
-    </div>
-    </div>
-    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"></div> 
-   
-</div>
-
+<?php $initi=$initi+1;$k=$k+3;  }} ?>
+<!-- row -->
  </div>
-
+ 
 <?php include 'include/footer.php' ?>
 
 

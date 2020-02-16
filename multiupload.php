@@ -22,7 +22,7 @@
                 $data = json_decode($file, true);
                 
                 // Get last id
-                // $last_item    = count($data);
+                $last_item    = count($data);
                 // $imagelink = $last_item.'_'.$_POST['imagelink'];
                
                 if(!empty($_POST['Jobadded'])){

@@ -1,5 +1,5 @@
-<nav class="navbar navbar-dark bg-primary">
-  <a class="navbar-brand" href="#">Navbar</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary" >
+  <a class="navbar-brand" href="#">catchmyjob</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -7,21 +7,31 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" target="_blank" href="add_job.php">Add Data</a>
+        <a class="nav-link" href="adddata">Add job</a>
+      </li>
+      <!-- <li class="nav-item">
+        <a class="nav-link" href="addjob">Add Data</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" target="_blank" href="check_data.php">Check Data</a>
-      </li>
+        <a class="nav-link" href="checkdata">Check Data</a>
+      </li> -->
       <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        <a class="nav-link" href="adddepartment">Add Department</a>
       </li>
+      <!-- <li class="nav-item">
+        <a class="nav-link" href="Detail_job.php">Job Detail</a>
+      </li> -->
+      <li class="nav-item">
+        <a class="nav-link" href="check_job_data.php">Check Job Detail</a>
+      </li>
+     
     </ul>
-    <form class="form-inline my-2 my-lg-0">
+    <!-- <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+    </form> -->
   </div>
 </nav>

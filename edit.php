@@ -4,7 +4,7 @@ if (isset($_GET["edit"])) {
     $id = (int) $_GET["edit"];
     $orig = (int) $_GET["edit"];
     setcookie("name", $orig, time()+3600, "/","", 0); ;
-    $getfile = file_get_contents('dataa.json');
+    $getfile = file_get_contents('d.json');
     $jsonfile = json_decode($getfile, true);
     // $jsonfile = $jsonfile["jobdata"];
     $k=0;
@@ -23,16 +23,16 @@ if (isset($_GET["edit"])) {
 
 if (isset($_POST["id"])) {
     $id = (int) $_POST["id"];
-    $getfile = file_get_contents('dataa.json');
+    $getfile = file_get_contents('d.json');
     $all = json_decode($getfile, true);
     // $jsonfile = $all["jobdata"];
     $jsonfile = $all[$id];
     $post["id"] = $_COOKIE["name"];
     $post["CompanyName"] = isset($_POST["CompanyName"]) ? $_POST["CompanyName"] : "";
-    $post["JobTitle"] = isset($_POST["JobTitle"]) ? $_POST["JobTitle"] : "";
+    $post["post_name"] = isset($_POST["post_name"]) ? $_POST["post_name"] : "";
     $post["Eligibility"] = isset($_POST["Eligibility"]) ? $_POST["Eligibility"] : "";
     $post["JobLocation"] = isset($_POST["JobLocation"]) ? $_POST["JobLocation"] : "";
-    $post["TotalVacancies"] = isset($_POST["TotalVacancies"]) ? $_POST["TotalVacancies"] : "";
+    $post["Total_Vacancy"] = isset($_POST["Total_Vacancy"]) ? $_POST["Total_Vacancy"] : "";
     $post["jobdateadded"] = isset($_POST["jobdateadded"]) ? $_POST["jobdateadded"] : "";
     $post["joblastdate"] = isset($_POST["joblastdate"]) ? $_POST["joblastdate"] : "";
     // $post["xyz"]         =  array(
@@ -88,15 +88,15 @@ if (isset($_POST["id"])) {
     // "num_posts25" => ucwords(strtolower($_POST['numberofpost50']))
     
     // );
-    $post["educationqualification"] = isset($_POST["educationqualification"]) ? $_POST["educationqualification"] : "";
+    $post["Qualification"] = isset($_POST["Qualification"]) ? $_POST["Qualification"] : "";
     $post["tags"] = isset($_POST["tags"]) ? $_POST["tags"] : "";
     $post["typeofjob"] = isset($_POST["typeofjob"]) ? $_POST["typeofjob"] : "";
     $post["MainLink"] = isset($_POST["MainLink"]) ? $_POST["MainLink"] : "";
     $post["pdflink"] = isset($_POST["pdflink"]) ? $_POST["pdflink"] : "";
-    $post["Pay"] = isset($_POST["Pay"]) ? $_POST["Pay"] : "";
+    $post["Grade_Pay"] = isset($_POST["Grade_Pay"]) ? $_POST["Grade_Pay"] : "";
     $post["lastdateoffee"] = isset($_POST["lastdateoffee"]) ? $_POST["lastdateoffee"] : "";
     $post["State"] = isset($_POST["State"]) ? $_POST["State"] : "";
-    $post["howtoapply"] = isset($_POST["howtoapply"]) ? $_POST["howtoapply"] : "";
+    $post["Howtoapply"] = isset($_POST["Howtoapply"]) ? $_POST["Howtoapply"] : "";
     $post["imagelink"] = isset($_POST["imagelink"]) ? $_POST["imagelink"] : "";
     $post["main_intro"] = isset($_POST["main_intro"]) ? $_POST["main_intro"] : "";
     if ($jsonfile) {
@@ -105,7 +105,7 @@ if (isset($_POST["id"])) {
         
         // $all[$id] = array_values($all[$id]);
         // $all = arsort($all);
-        file_put_contents("dataa.json", json_encode($all));
+        file_put_contents("d.json", json_encode($all));
     }
     header("Location: ./index.php");
 }
@@ -144,7 +144,7 @@ if (isset($_POST["id"])) {
         <input class="form-control input-lg" type="text" value="<?php echo $jsonfile["CompanyName"] ?>" name="CompanyName"/></div>
         <div class="col-sm-6 col-md-6 col-xs-6">
         <label for="JobTitle"><b>Job Title</b></label>
-        <input type="text" value="<?php echo $jsonfile["JobTitle"] ?>" name="JobTitle"/></div>
+        <input type="text" value="<?php echo $jsonfile["post_name"] ?>" name="post_name"/></div>
         <button id="add">Add</button>
         </div>
         <div class="row"><div class="col-sm-6 col-md-6 col-xs-6">
@@ -154,8 +154,8 @@ if (isset($_POST["id"])) {
         <label for="JobLocation"><b>Job Location</b></label>
         <input type="text" value="<?php echo $jsonfile["JobLocation"] ?>" name="JobLocation"/></div></div>
         <div class="row"><div class="col-sm-6 col-md-6 col-xs-6">
-        <label for="TotalVacancies"><b>TotalVacancies</b></label>
-     <input type="text" value="<?php echo $jsonfile["TotalVacancies"] ?>" name="TotalVacancies"/></div>
+        <label for="Total_Vacancy"><b>TotalVacancies</b></label>
+     <input type="text" value="<?php echo $jsonfile["Total_Vacancy"] ?>" name="Total_Vacancy"/></div>
      <div class="col-sm-6 col-md-6 col-xs-6">
      <label for="jobdateadded"><b>jobdateadded</b></label>
         <input type="text" value="<?php echo $jsonfile["jobdateadded"] ?>" name="jobdateadded"/></div></div>
@@ -164,8 +164,8 @@ if (isset($_POST["id"])) {
         <input type="text" value="<?php echo $jsonfile["joblastdate"] ?>" name="joblastdate"/></div>
        
         <div class="col-sm-6 col-md-6 col-xs-6">
-        <label for="educationqualification"><b>educationqualification</b></label>
-        <input type="text" value="<?php echo $jsonfile["educationqualification"] ?>" name="educationqualification"/></div></div>
+        <label for="Qualification"><b>educationqualification</b></label>
+        <input type="text" value="<?php echo $jsonfile["Qualification"] ?>" name="Qualification"/></div></div>
         <div class="row"><div class="col-sm-6 col-md-6 col-xs-6">
         <label for="tags"><b>tags</b></label>
         <input type="text" value="<?php echo $jsonfile["tags"] ?>" name="tags"/></div>
@@ -179,8 +179,8 @@ if (isset($_POST["id"])) {
         <label for="pdflink"><b>pdflink</b></label>
         <input type="text" value="<?php echo $jsonfile["pdflink"] ?>" name="pdflink"/></div></div>
         <div class="row"><div class="col-sm-6 col-md-6 col-xs-6">
-        <label for="Pay"><b>Pay</b></label>
-        <input type="text" value="<?php echo $jsonfile["Pay"] ?>" name="Pay"/></div>
+        <label for="Grade_Pay"><b>Grade Pay</b></label>
+        <input type="text" value="<?php echo $jsonfile["Grade_Pay"] ?>" name="Grade_Pay"/></div>
         <div class="col-sm-6 col-md-6 col-xs-6">
         <label for="lastdateoffee"><b>lastdateoffee</b></label>
         <input type="text" value="<?php echo $jsonfile["lastdateoffee"] ?>" name="lastdateoffee"/></div></div>
@@ -188,8 +188,8 @@ if (isset($_POST["id"])) {
         <label for="State"><b>State</b></label>
         <input type="text" value="<?php echo $jsonfile["State"] ?>" name="State"/></div>
         <div class="col-sm-6 col-md-6 col-xs-6">
-        <label for="howtoapply"><b>How to Apply</b></label>
-        <input type="text" value="<?php echo $jsonfile["howtoapply"] ?>" name="howtoapply"/></div>
+        <label for="Howtoapply"><b>How to Apply</b></label>
+        <input type="text" value="<?php echo $jsonfile["Howtoapply"] ?>" name="Howtoapply"/></div>
         </div>
         <div class="row"><div class="col-sm-6 col-md-6 col-xs-6">
         <label for="imagelink"><b>Image Link</b></label>
