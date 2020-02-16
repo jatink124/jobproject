@@ -151,6 +151,12 @@ $(function() {
     document.cookie="boardjobid="+brdid;
 });
 </script>
+<script>
+ $('a.nav-link.eligjob').click(function() {
+    var eligid = $(this).attr('id');
+    document.cookie="eligid="+eligid;
+});
+</script>
  <script src="../php/main.js"></script>
  <script src="../doublescroll.js"></script>
  <script>

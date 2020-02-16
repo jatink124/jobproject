@@ -186,6 +186,26 @@ public function create($problem,$name, $number,$gender,$email,$New_Patient,$appo
 		$res = mysqli_query($this->connection, $sql);
  		return $res;
 	}
+	public function read_elig($eligid){
+		$sql = "SELECT  jb.id,tbel.qual,tbs.statename,tbj.boardjobname,jb.boardid,jb.imagelink,jb.main_intro,tbn.bname,bd.deptname,bd.posts,bd.salary,bd.qualification,bd.jobrole,bd.agelimit,jb.Eligibility,
+		jb.JobLocation,jb.jobdateadded,jb.joblastdate,jb.tags,jb.typeofjob,jb.MainLink,jb.pdflink,jb.lastdateoffee,jb.status,jb.imagelink,jb.State,jb.main_intro,
+		tp.post_id,tp.post_name,tp.Total_Vacancy,tp.Grade_Pay,tp.Age_Limit,tp.Qualification,
+			  tp.Experience,tp.Duties,tp.Howtoapply        
+			  FROM jobdetail jb 
+			  INNER JOIN tbl_post tp ON jb.postid=tp.post_id
+			  INNER JOIN tbl_boardname tbn        
+			  ON jb.boardid=tbn.id LEFT JOIN tbl_boarddept bd ON tbn.id=bd.boardid LEFT JOIN tbl_state tbs ON tbs.id=jb.State
+  LEFT JOIN tbl_board_jobs tbj  ON tbj.id=jb.boardjob LEFT JOIN tbl_eligibility tbel  ON jb.eligjob=tbel.id
+    WHERE jb.eligjob = $eligid group BY jb.postid ORDER BY jb.id ASC";
+		if (mysqli_query($this->connection, $sql)) {
+			$res = mysqli_query($this->connection, $sql);
+		} else {
+			echo "Error: " . $sql . "<br>" . mysqli_error($this->connection);
+		}
+		// if($id){ $sql .= " WHERE id=$id";}
+		$res = mysqli_query($this->connection, $sql);
+ 		return $res;
+	}
 	public function read_contacts($id=null){
 		$sql = "SELECT * FROM `contact_db`";
 		if($id){ $sql .= " WHERE id=$id";}

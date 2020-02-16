@@ -39,9 +39,9 @@
        <li class="nav-item">
         <a class="nav-link brdjob" id="2" href="sarkarijob">Bank Jobs</a>
       </li>
-      <!-- <li class="nav-item">
-        <a class="nav-link" href="checkdata">Check Data</a>
-      </li>  -->
+      <li class="nav-item">
+        <a class="nav-link eligjob" id ="1" href="jobeligibility.php">10th Jobs</a>
+      </li> 
       <!-- <li class="nav-item">
         <a class="nav-link" href="adddepartment">Add Department</a>
       </li> -->
