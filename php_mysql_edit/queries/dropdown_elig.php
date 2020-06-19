@@ -4,5 +4,6 @@
 
 $sql = "select * from tbl_eligibility";
 $eligresult = mysqli_query($connect, $sql);
+$indexeligresult = mysqli_query($connect, $sql);
 
 ?>

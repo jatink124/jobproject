@@ -1,4 +1,4 @@
-
+<?php include '../resultsheader/queries/showresults.php' ?>
 <!doctype html>
 <html lang="en">
   <head>

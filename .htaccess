@@ -1,22 +1,98 @@
 RewriteEngine on
+RewriteCond %{HTTP_HOST} ^catchmyjob\.in [NC]
+RewriteCond %{SERVER_PORT} 80 
+RewriteRule ^(.*)$ https://www.catchmyjob.in/$1 [R,L]
+
 
 RewriteCond %{REQUEST_FILENAME} !-d
-
 RewriteCond %{REQUEST_FILENAME}\.php -f
 
 RewriteRule ^index index.php
+RewriteRule  ^jobsinbihar   job-location/Bihar
+RewriteRule  ^jobsinNoida   job-location/Noida
+RewriteRule  ^jobsinMumbai   ./search/dropdownsearch.php?loc=51
+RewriteRule  ^jobsinMaharashtra   ./search/dropdownsearch.php?loc=14
+RewriteRule  ^jobsinKarnataka   ./search/dropdownsearch.php?loc=11
+RewriteRule  ^jobsinUttrakhand   ./search/dropdownsearch.php?loc=26
+RewriteRule  ^jobsinMadhyaPradesh   ./search/dropdownsearch.php?loc=13
+RewriteRule  ^jobsinKerala   ./search/dropdownsearch.php?loc=12
+RewriteRule  ^jobsinGujarat   ./search/dropdownsearch.php?loc=7
+RewriteRule  ^jobsinJharkhand   ./search/dropdownsearch.php?loc=10
+RewriteRule  ^jobsindelhi   job-location/Delhi
+RewriteRule  ^jobsinhimachal   ./search/dropdownsearch.php?loc=9
+RewriteRule  ^jobsinBengaluru   job-location/53
+RewriteRule  ^jobsinHyderabad  job-location/41
+RewriteRule  ^sarkari_noida_jobs ./state/jobsinnoidadet.php
+
+RewriteRule  ^10th-pass-jobs qualification/10th
+RewriteRule  ^graduation-pass-jobs qualification/GraduateRelevantDiscipline
+RewriteRule  ^twelth-pass-jobs qualification/12th
+RewriteRule  ^iti-pass-jobs qualification/ITI
+RewriteRule  ^B.tech-B.E-jobs qualification/BtechBE
+RewriteRule  ^civil-Engineering-jobs qualification/civilengineering
+RewriteRule  ^Diploma-jobs qualification/Diploma
+
+
+
+RewriteRule  ^sarkari_tenth_passjobs ./eligibility_jobs/elig_other/sarkarijob_tenth_detail.php
+RewriteRule  ^sarkari_twelth_passjobs ./eligibility_jobs/elig_other/sarkarijob_twelth_detail.php
+RewriteRule  ^sarkari_grad_passjobs ./eligibility_jobs/elig_other/sarkarijob_grad_detail.php
+RewriteRule  ^sarkari_iti_passjobs ./eligibility_jobs/elig_other/sarkarijob_iti_detail.php
+
+RewriteRule  ^latestjobs/108 ./search/dropdownsearch.php?latest=108
+
+RewriteRule  ^jobs-in-finance ./Government_jobs/jobs_in_finance.php
+RewriteRule  ^sarkari_finance_jobs ./Government_jobs/jobs_in_finance_det.php
+
+RewriteRule  ^Engineering-Jobs type-of-job/Engineeringjobs
+
+RewriteRule  ^manager-jobs ./search/dropdownsearch.php?toj=30
+RewriteRule  ^Data-entry_operator type-of-job/36
+RewriteRule  ^clerk type-of-job/37
+RewriteRule  ^translator-jobs type-of-job/37
+RewriteRule  ^AIIMS-jobs type-of-job/39
+
+RewriteRule  ^isrojobsdetail ./isro/isrojobsdet.php
+RewriteRule  ^sscjobsdetail ./ssc/sscjobsdet.php
+RewriteRule  ^searchresult ./search/dropdownsearch.php
+
+
+
+RewriteRule  ^jobresult ./resultsfolder/jobresult.php
+RewriteRule  ^sarkarijobresult ./resultsfolder/results.php
+RewriteRule  ^sarkari_bihar_jobs ./state/jobsinbihardet.php
+RewriteRule  ^sarkari_karnataka_jobs ./state/jobsinkarnatakadet.php
+RewriteRule  ^sarkari_himachal_pradesh_jobs ./state/jobsinhimachaldet.php
+RewriteRule  ^sarkari_delhi_jobs ./state/jobsindelhidet.php
+RewriteRule  ^sarkari_gujarat_jobs ./state/jobsingujaratdet.php
 RewriteRule  ^statesarkarijob ./state.php
-RewriteRule  ^sarkarijob ./boardjob.php
-RewriteRule  ^jobdetail ./Detail_job.php
+RewriteRule  ^upsc-jobs ./upscbank/upsc_jobs.php
+RewriteRule  ^bank-jobs type-of-job/Bankjobs
+RewriteRule  ^ISRO_Sarkari_job ./isro/ISROjobs.php
+RewriteRule  ^staff_selection_commission ./search/dropdownsearch.php?toj=33
+RewriteRule  ^reservebankofindia type-of-job/RBI
+
+RewriteRule  ^sarkarijobdetail ./Detail_job_individual.php
+
 RewriteRule  ^login ./authentication/login.php
 RewriteRule  ^adddepartment ./phpcrudmodal/index.php
 RewriteRule  ^addjob ./pages/add_job.php
+RewriteRule  ^blogcrud ./blog/index.php
+RewriteRule  ^latestcrud ./latestnews/crud/indexcrud.php
 
+RewriteRule  ^latestjobs/([0-9A-Za-z]+) ./search/dropdownsearch.php?latest=$1 [NC,L]
+RewriteRule  ^qualification/([0-9A-Za-z]+) ./search/dropdownsearch.php?qual=$1 [NC,L]
+RewriteRule  ^job-location/([0-9A-Za-z]+) ./search/dropdownsearch.php?loc=$1 [NC,L]
+RewriteRule  ^type-of-job/([0-9A-Za-z]+) ./search/dropdownsearch.php?toj=$1 [NC,L]
+RewriteRule  ^jobdetail/([0-9A-Za-z]+) ./Detail_job.php?jd=$1 [NC,L]
+RewriteRule  ^latestjobdetail/([0-9A-Za-z]+) ./Detail_job.php?l=$1 [NC,L]
+RewriteRule  ^jobdetail ./Detail_job.php
 RewriteRule  ^checkdata ./pages/check_data.php
-
+RewriteRule  ^searchdetail/([0-9A-Za-z]+) ./search/searchdet.php?s=$1 [NC,L]
 RewriteRule  ^adddata ./php_mysql_edit/index.php
-
-
+RewriteRule  ^latestnews/([0-9]+) ./latestnews/latest_news_detail.php?latestnews=$1 [NC,L]
+RewriteRule  ^latestsearchdetail/([0-9A-Za-z]+) ./search/searchdet.php?d=$1 [NC,L]
+RewriteRule ^searchdetail/([0-9]+) ./search/searchdet.php?s=$1 [NC,L]
 
 
 

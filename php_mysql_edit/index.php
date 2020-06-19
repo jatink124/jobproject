@@ -2,11 +2,15 @@
 <?php include './queries/dropdown_boardname.php'?>
 <?php include './queries/dropdown_elig.php'?>
 <?php include './queries/dropdown_state.php'?>
+<?php include './queries/dropdown_toj.php'?>
+<?php include './queries/dropdownstate.php'?>
 <html>
  <head>
   <title>Live Add Edit Delete Datatables Records using PHP Ajax</title>
  
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css" />
   
   <style>
  /* insertdept */
@@ -108,6 +112,7 @@ div.update {
    
  </style>
  <!-- scrollable table -->
+ 
  </head>
  <body>
   <div class="container box">
@@ -241,7 +246,27 @@ div.update {
     </div></div>
     <div class="col-sm-6">
 <label for="deptelig">Dept-Board:</label><br>
-  <select id="deptelig" name="deptelig"><?php while($roww = mysqli_fetch_array($eligresult)){?><option value="<?php echo $roww["id"];?>"><?php echo $roww["qual"];?></option><?php }?></select></div></div>
+  <select id="deptelig" multiple name="deptelig[]"><?php while($roww = mysqli_fetch_array($eligresult)){?><option value="<?php echo $roww["id"];?>"><?php echo $roww["qual"];?></option><?php }?></select>
+</div></div>
+
+<div class="row"><div class="col-sm-6">
+  <div class="form-group">
+  <label for="tags">tags:</label>
+  <input type="text" name="tags" class="form-control" id="tags">
+  </div></div>
+  <div class="col-sm-6">
+    <div class="form-group">  
+<label for="toj">Type of Job:</label><br>
+  <select id="toj" multiple name="toj[]"><?php while($tojrow = mysqli_fetch_array($tojresult)){?><option value="<?php echo $tojrow["id"];?>"><?php echo $tojrow["tojname"];?></option><?php }?></select>
+</div></div></div>
+<div class="row"><div class="col-sm-6">
+  <div class="form-group">
+  <label for="state">State:</label><br>
+  <select id="state" multiple name="state[]"><?php while($staterow = mysqli_fetch_array($stateresult)){?><option value="<?php echo $staterow["id"];?>"><?php echo $staterow["statename"];?></option><?php }?></select>
+  </div></div>
+  <div class="col-sm-6">
+    <div class="form-group"></div>
+  </div></div>
   <button type="submit" class="btn btn-default">Submit</button>
 </form>
       </div>
@@ -252,6 +277,7 @@ div.update {
     </div>
   </div>
 </div>
+
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/fixedcolumns/3.3.0/js/dataTables.fixedColumns.min.js"></script>
@@ -262,7 +288,16 @@ div.update {
   <script src="doublescroll.js"></script>
  </body>
 </html>
-
+<script>
+ $(document).ready(function(){
+$('#Eligibility').multiselect({
+  nonSelectedText: 'Select Framework',
+  enableFiltering: true,
+  enableCaseInsensitiveFiltering: true,
+  buttonWidth:'400px'
+ });
+ });
+</script>
 <script type="text/javascript" language="javascript" >
  $(document).ready(function(){
   
@@ -308,25 +343,26 @@ div.update {
    var value = $(this).text();
    update_data(post_id,id, column_name, value);
   });
-  
+ 
   $('#add').click(function(){
    var html = '<tr>';
 
    html +=  '<td class="dropup" contenteditable name="BoardName" id="data0"><select  id="mselect"><?php while($row = mysqli_fetch_array($addresultt)){?><option value="<?php echo $row["id"];?>"><?php echo $row["bname"];?></option><?php }?></select></td>';
-  
-   html += '<td contenteditable name="Eligibility" id="data2"></td>';
+   html +=  '<td contenteditable id="data2"><select name="Eligibility[]" id="Eligibility" multiple><?php while($eligrow = mysqli_fetch_array($indexeligresult)){?><option value="<?php echo $eligrow["id"];?>"><?php echo $eligrow["qual"];?></option><?php }?></select></td>';
+  //  html += '<td contenteditable name="Eligibility" id="data2"></td>';
    html += '<td contenteditable name="JobLocation" id="data3"></td>';
    html += '<td contenteditable name="jobdateadded" id="data4"></td>';
    html += '<td contenteditable name="joblastdate" id="data5"></td>';
    html += '<td contenteditable name="tags" id="data6"></td>';
-   html += '<td contenteditable name="typeofjob" id="data7"></td>';
+   html +=  '<td contenteditable id="data7"><select name="typeofjob[]" id="typeofjob" multiple><?php while($tojrow = mysqli_fetch_array($tojjresult)){?><option value="<?php echo $tojrow["id"];?>"><?php echo $tojrow["tojname"];?></option><?php }?></select></td>';
+  //  html += '<td contenteditable name="typeofjob" id="data7"></td>';
    html += '<td contenteditable name="MainLink" id="data8"></td>';
    html += '<td contenteditable name="pdflink" id="data9"></td>';
    html += '<td contenteditable  name="lastdateoffee" id="data10"></td>';
    html += '<td contenteditable name="status" id="data11"></td>';
    html += '<td contenteditable name="imagelink" id="data12"></td>';
   //  html += '<td contenteditable name="State" id="data13"></td>';
-  html +=  '<td contenteditable name="State" id="data13"><select id="stateselect"><?php while($staterow = mysqli_fetch_array($stateresult)){?><option value="<?php echo $staterow["id"];?>"><?php echo $staterow["statename"];?></option><?php }?></select></td>';
+  html +=  '<td contenteditable name="State" id="data13"><select id="stateselect"><?php while($staterow = mysqli_fetch_array($stateresultnew)){?><option value="<?php echo $staterow["id"];?>"><?php echo $staterow["statename"];?></option><?php }?></select></td>';
    html += '<td contenteditable name="main_intro" id="data14"></td>';
    html += '<td contenteditable name="post_name" id="data15"></td>';
    html += '<td contenteditable name="Total_Vacancy" id="data16"></td>';
@@ -344,12 +380,12 @@ div.update {
   $(document).on('click', '#insert', function(){
    var BoardName = $('#mselect').val();
   //  var CompanyName = $('#data1').text();
-   var Eligibility = $('#data2').text();
+   var Eligibility = $('#Eligibility').val();
    var JobLocation = $('#data3').text();
    var jobdateadded = $('#data4').text();
    var joblastdate = $('#data5').text();
    var tags = $('#data6').text();
-   var typeofjob = $('#data7').text();
+   var typeofjob = $('#typeofjob').val();
    var MainLink = $('#data8').text();
    var pdflink = $('#data9').text();
    var lastdateoffee = $('#data10').text();
@@ -380,6 +416,10 @@ div.update {
       $('#alert_message').html('<div class="alert alert-success">'+data+'</div>');
       $('#user_data').DataTable().destroy();
       fetch_data();
+      $('#Eligibility option:selected').each(function(){
+     $(this).prop('selected', false);
+    });
+    $('#Eligibility').multiselect('refresh');
      }
     });
     setInterval(function(){
@@ -412,4 +452,5 @@ div.update {
    }
   });
  });
+
 </script>

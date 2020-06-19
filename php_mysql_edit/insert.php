@@ -7,6 +7,18 @@
 if(isset($_POST["BoardName"] ,$_POST["Eligibility"]))
 {
  
+	$Eligibility = '';
+	foreach($_POST["Eligibility"] as $row)
+	{
+	 $Eligibility.= $row.',';
+	}
+	$Eligibility = substr($Eligibility, 0, -2);
+	$typeofjob = '';
+	foreach($_POST["typeofjob"] as $row)
+	{
+	 $typeofjob.= $row.',';
+	}
+	$typeofjob = substr($typeofjob, 0, -2);
 	// $sql = "INSERT INTO tbl_boardname (bname) 
 	// VALUES ('$BoardName')";
 	// if (mysqli_query($connect, $sql)) {

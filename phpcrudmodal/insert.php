@@ -6,7 +6,18 @@
  {  
       $output = '';  
       $message = '';  
-     
+      $toj = '';
+      foreach($_POST["toj"] as $row)
+      {
+       $toj .= $row . ',';
+      }
+      $toj = substr($toj, 0, -2); 
+      $state = '';
+      foreach($_POST["state"] as $row)
+      {
+       $state .= $row . ',';
+      }
+      $state = substr($state, 0, -2);  
      $departmentboard = mysqli_real_escape_string($connect, $_POST["BoardNamee"]);   
      $deptname = mysqli_real_escape_string($connect, $_POST["deptname"]);  
       $deptpostname = mysqli_real_escape_string($connect, $_POST["deptpostname"]);  
@@ -16,12 +27,11 @@
       $jobrole = mysqli_real_escape_string($connect, $_POST["jobrole"]);
       $agelimit = mysqli_real_escape_string($connect, $_POST["agelimit"]); 
       $dsp = mysqli_real_escape_string($connect, $_POST["dsp"]);  
-      $depelig = mysqli_real_escape_string($connect, $_POST["deptelig"]);  
-      $salaryrange = mysqli_real_escape_string($connect, $_POST["salaryrange"]);
-    //  $columns = implode(", ",array_keys($_POST["agerange"]));
-      $agerange = mysqli_real_escape_string($connect,$_POST["agerange"]); 
-    
-      if($_POST["id"] != '')  
+      $tags = mysqli_real_escape_string($connect, $_POST["tags"]);
+      $deptelig = mysqli_real_escape_string($connect, $_POST["deptelig"]);
+      $toj = mysqli_real_escape_string($connect, $toj); 
+      $state = mysqli_real_escape_string($connect, $state);  
+     if($_POST["id"] != '')  
       {  
            $query = "  
            UPDATE tbl_boarddept   
@@ -34,17 +44,18 @@
            jobrole = '$jobrole',
            agelimit = '$agelimit',
            desiredspecialization = '$dsp',
-           deptelig = '$depelig',
-           salaryrange = '$salaryrange',
-           agerange = '$agerange'
+           deptelig = '$deptelig',
+           tags = '$tags',
+           toj = '$toj',
+           state='$state'
            WHERE id='".$_POST["id"]."'";  
            $message = 'Data Updated';  
       }  
       else  
       {  
            $query = "  
-           INSERT INTO tbl_boarddept(deptname,deptpostname,posts,salary,qualification,jobrole,agelimit,desiredspecialization,depelig,salaryrange,agerange)  
-           VALUES('$deptname', '$deptpostname', '$numberofposts', '$salary', '$deptqualification','$jobrole','$agelimit','$dsp','$depelig','$salaryrange','$agerange');  
+           INSERT INTO tbl_boarddept(deptname,deptpostname,posts,salary,qualification,jobrole,agelimit,desiredspecialization,deptelig)  
+           VALUES('$deptname', '$deptpostname', '$numberofposts', '$salary', '$deptqualification','$jobrole','$agelimit','$dsp','$deptelig','$tags');  
            ";  
            $message = 'Data Inserted';  
       }  
@@ -78,5 +89,6 @@
      }
       echo $output;  
  }  
+ echo "<meta http-equiv='refresh' content='0'>";
  ?>
  

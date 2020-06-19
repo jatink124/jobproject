@@ -24,6 +24,7 @@ class ComposerStaticInitc7dd4b9312792eab139ce72e599de8de
             'Psr\\Log\\' => 8,
             'Psr\\Http\\Message\\' => 17,
             'Psr\\Cache\\' => 10,
+            'Plasticbrain\\FlashMessages\\' => 27,
         ),
         'M' => 
         array (
@@ -58,6 +59,10 @@ class ComposerStaticInitc7dd4b9312792eab139ce72e599de8de
         'Psr\\Cache\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/cache/src',
+        ),
+        'Plasticbrain\\FlashMessages\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/plasticbrain/php-flash-messages/src',
         ),
         'Monolog\\' => 
         array (

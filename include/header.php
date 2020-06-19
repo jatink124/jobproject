@@ -1,7 +1,15 @@
+<?php include './include/connectionstring.php'?>
+<?php
+//fetch.php
 
+$sql = "select * from tbl_results order by id DESC";
+$resultdata = mysqli_query($connect, $sql);
+
+?>
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
  <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-J6LKDHH5Z9"></script>
 <script>
@@ -11,22 +19,39 @@
 
   gtag('config', 'G-J6LKDHH5Z9');
 </script>
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="description" content="catchyourjob.in is a leading job website for freshers and experienced employers
-    and students">
+    <!-- <meta name="description" content="catchyourjob.in is a leading job website for freshers and experienced employers
+    and students"> -->
+    <?php if (isset($_GET['q'])){?>
+   <title>Job Post as <?php echo $boardname[0]; ?></title>
+    <meta name="description" content="Find latest-jobs,news,Check Eligibility,Experience for the post of <?php echo $boardname[0]; ?>"><?php } ?>
   <meta name="keywords" content="recruitment,jobs,current affars,job alert,govtjobs 2020">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" >
     <link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" rel="stylesheet">
     <link href="dist/bootstrap-table.min.css" rel="stylesheet"/>
     <link href="dist/extentions/filter-control/bootstrap-table-filter-control.min.css" rel="stylesheet"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.1/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet">
 <link href="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.css" rel="stylesheet">
+<!-- <link href="css/sidebar.css" rel="stylesheet"> -->
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
     <title>Latest Jobs alerts and results</title>
+    <?php include './pages/baseroute.php' ?>
+   
+    <link rel="icon" type="image/png" sizes="192x192" href="/catchfavicon.png">
+    <!-- <link rel="shortcut icon" type="image/jpg" href="./favicon.jpg"/> -->
+    <!-- <base href="/myprojects/"> -->
+   
     <style>
+  .btn-outline-success {
+    background-color: aqua;
+}
    .navbar-light .navbar-nav .nav-link {
  
     color: floralwhite;
@@ -34,7 +59,8 @@
 li.nav-item {
   
     /* margin-right: 30px; */
-    margin-left: 50px;
+    margin-left: 20px;
+    /* border: 2px solid #2f2390; */
 }
       </style>
       <style>
@@ -55,7 +81,7 @@ li.nav-item {
 }
  /* menu */
  .navbar-dark .navbar-nav .nav-link {
-    font-size: larger!important;
+    font-size: 18px!important;
    color: floralwhite!important;
 }
  /* menu */

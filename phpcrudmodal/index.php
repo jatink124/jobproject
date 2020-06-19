@@ -1,8 +1,10 @@
 <?php include 'queries/select_board_dept.php'?>
 <?php include 'queries/dropdown_boardname.php'?>
 <?php include './queries/dropdown_elig.php'?>
+<?php include './queries/dropdown_toj.php'?>
 <?php include './queries/dropdown_salaryrange.php'?>
 <?php include './queries/dropdown_agerange.php'?>
+<?php include './queries/dropdownstate.php'?>
  <!DOCTYPE html>  
  <html>  
       <head>  
@@ -81,7 +83,7 @@
                      <h4 class="modal-title">PHP Ajax Update MySQL Data Through Bootstrap Modal</h4>  
                 </div>  
                 <div class="modal-body">  
-                     <form method="post" id="insert_form">  
+                     <form method="post" id="insert_form" onsubmit="window.location.reload();">  
                           <div class="row"><div class="col-sm-6 col-md-6">
                           <label>Select Board Name</label><br>  
      <select id="deptselect" name="departmentboard"><?php while($boardrow = mysqli_fetch_array($boardresult)){?><option value="<?php echo $boardrow["id"];?>"><?php echo $boardrow["bname"];?></option><?php }?></select> 
@@ -115,13 +117,20 @@
                           </div></div>
                           <br/> 
                              <div class="row">
-                              <div class="col-sm-6 col-md-6"><label>Salary-range</label><br>  
-<select id="salaryrange" name="salaryrange" ><?php while($rowsrange = mysqli_fetch_array($salaryrangeresult)){?><option value="<?php echo $rowsrange["id"];?>"><?php echo $rowsrange["salarycomp"];?></option><?php }?></select>
+                              <div class="col-sm-6 col-md-6"><label>tags</label><br>  
+                              <input type="text" name="tags" id="tags" class="form-control" />
                               </div>
-                              <div class="col-sm-6 col-md-6"><label>Age-range</label><br> 
-<select id="agerange" name="agerange"><?php while($rowagerange = mysqli_fetch_array($agerangeresult)){?><option value="<?php echo $rowagerange["id"];?>"><?php echo $rowagerange["agecomp"];?></option><?php }?></select>
-                                  
-                                  </div>
+                              <div class="col-sm-6 col-md-6"><label>Type of Job</label><br> 
+      <select id="toj" multiple name="toj[]><?php while($tojrow = mysqli_fetch_array($tojresult)){?><option value="<?php echo $tojrow["id"];?>"><?php echo $tojrow["tojname"];?></option><?php }?></select>
+                            </div>
+                         </div>
+                         <div class="row">
+                              <div class="col-sm-6 col-md-6"><label>State</label><br>  
+               <select id="state" multiple name="state[]><?php while($staterow = mysqli_fetch_array($stateresult)){?><option value="<?php echo $staterow["id"];?>"><?php echo $staterow["statename"];?></option><?php }?></select>
+                              </div>
+                              <div class="col-sm-6 col-md-6"> 
+      
+                            </div>
                          </div>
                               <br/>
                           <input type="hidden" name="id" id="id" />  
@@ -159,7 +168,10 @@
                      $('#dsp').val(data.dsp); 
                      $('#deptelig').val(data.elo);
                      $('#salaryrange').val(data.sr);
-                     $('#agerange').val(data.agerange);  
+                     $('#agerange').val(data.agerange);
+                     $('#tags').val(data.tags);
+                     $('#toj').val(data.toj);
+                     $('#state').val(data.state);    
                      $('#id').val(data.id);  
                      $('#insert').val("Update");  
                      $('#add_data_Modal').modal('show');  
@@ -178,8 +190,9 @@
    var agelimit = $('#agelimit').val();
    var dsp = $('#dsp').val();
    var deptelig = $('#deptelig').val();
-   var salaryrange = $('#salaryrange').val();
-   var agerange = $('#agerange').val();
+  var tags = $('#tags').val();
+  var toj = $('#toj').val();
+  var state = $('#state').val();
    var id = $('#id').val();  
   
                 $.ajax({  
@@ -187,7 +200,7 @@
                      method:"POST",  
                     //  data:$('#insert_form').serialize(),  
                      data:{id:id,BoardNamee:BoardNamee,deptname:deptname,deptpostname:deptpostname,noofpost:noofpost,
-                    salary:salary,deptqualification:deptqualification,jobrole:jobrole,agelimit:agelimit,dsp:dsp,deptelig:deptelig,salaryrange:salaryrange,agerange:agerange},
+                    salary:salary,deptqualification:deptqualification,jobrole:jobrole,agelimit:agelimit,dsp:dsp,deptelig:deptelig,tags:tags,toj:toj,state:state},
                      beforeSend:function(){  
                           $('#insert').val("Inserting");  
                      },  
@@ -216,3 +229,4 @@
       });  
  });  
  </script>
+ 

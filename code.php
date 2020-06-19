@@ -41,3 +41,9 @@
 </div>
 </div>
 <!-- tablecode -->
+
+
+<!-- showing navigation menus through foreach -->
+<?php foreach ($statenav as $key => $value){ ?>
+        <a class="dropdown-item yu" id="<?php echo $key ?>" href="./jobsin<?php echo $value["statename"] ?>" target="_blank"><?php echo $value["statename"] ?></a>
+          <div class="dropdown-divider"></div> <?php } ?>

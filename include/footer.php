@@ -1,13 +1,28 @@
+
  <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>
     <script src="dist/extensions/toolbar/bootstrap-table-toolbar.min.js"></script>
     <script src="dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@12.4.0/dist/lazyload.min.js"></script>
-   <script>
+  <script>
+    $(function() {
+  
+   $.ajax({
+     url:"somescript.php",
+     method:"post",
+     data: {emps:JSON.stringify(emps)},
+     success: function(res){
+      debugger;
+     }
+   })
+});
+    </script>
+  <script>
     var lazyLoadInstance = new LazyLoad({
     elements_selector: ".card-img-top"
     // ... more custom settings?
@@ -133,28 +148,50 @@ $(function() {
 </script>
 <!-- add job -->
 
-<script>
+<!-- <script>
+ 
  $('a.dropdown-item.yu').click(function() {
+  document.cookie = "stateid=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
     var stateid = $(this).attr('id');
     document.cookie="stateid="+stateid;
 });
-</script>
+</script> -->
 <script>
- $('a.btn.btn-primary.idex').click(function() {
+$('a.btn.btn-primary.idex').click(function() {
     var id = $(this).attr('id');
     document.cookie="id="+id;
 });
 </script>
-<script>
- $('a.nav-link.brdjob').click(function() {
+
+<!-- <script>
+$('a.btn.btn-primary.ssc').click(function() {
+    var id = $(this).attr('id');
+    document.cookie="sscid="+id;
+});
+</script> -->
+<!-- <script>
+ $('a.dropdown-item.brdjob').click(function() {
     var brdid = $(this).attr('id');
     document.cookie="boardjobid="+brdid;
 });
-</script>
+</script> -->
 <script>
- $('a.nav-link.eligjob').click(function() {
+ $('a.dropdown-item.eligjob').click(function() {
     var eligid = $(this).attr('id');
     document.cookie="eligid="+eligid;
+});
+</script>
+
+<script>
+ $('a.dropdown-item.resm').click(function() {
+    var resultid = $(this).attr('id');
+    document.cookie="resultid="+resultid;
+});
+</script>
+<script>
+$('a.btn.btn-primary.eligdet').click(function() {
+    var id = $(this).attr('id');
+    document.cookie="tenthdetid="+id;
 });
 </script>
  <script src="../php/main.js"></script>
@@ -184,5 +221,79 @@ $(document).ready(function(){
     });
 });
 </script>
+
+<script>
+$(document).ready(function(){
+    var maxLength = 500;
+    $("p.card-text.f.show-read-more").each(function(){
+        var myStr = $(this).text();
+        if($.trim(myStr).length > maxLength){
+            var newStr = myStr.substring(0, maxLength);
+            var removedStr = myStr.substring(maxLength, $.trim(myStr).length);
+            $(this).empty().html(newStr);
+            $(this).append(' <a href="javascript:void(0);" class="read-more">read more...</a>');
+            $(this).append('<span class="more-text">' + removedStr + '</span>');
+        }
+    });
+    $(".read-more").click(function(){
+        $(this).siblings(".more-text").contents().unwrap();
+        $(this).remove();
+    });
+});
+</script>
+
+<script>
+$(document).ready(function(){
+  
+    
+$("button").click(function() { 
+    $(function () {
+  $('button#qualbtn').popover({
+    container: 'body'
+  })
+})});
+$(function () {
+  $('button#desqualbtn').popover({
+    container: 'body'
+  })
+})
+   
+    $(search).hover(function(){
+  $('[data-toggle="popover"]').popover({
+        placement : 'top',
+        trigger : 'hover'
+    }); 
+}); 
+
+});
+$("div").click(function(e) {
+        if($(e.target).is('button')){
+            e.preventDefault();
+            return;
+        
+          }
+        $("[data-toggle='popover']").popover('hide');
+    });
+</script>
+
+<script>
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="js/mj.js"></script>
+
+<script>
+$(document).ready(function () {
+
+$('#sidebarCollapse').on('click', function () {
+    $('#sidebar').toggleClass('active');
+});
+
+});
+</script>
+<script src="js/scrollabletabs.js"></script>
+
 </body>
 </html>

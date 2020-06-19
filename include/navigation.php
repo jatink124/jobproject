@@ -27,6 +27,9 @@
       <li class="nav-item">
         <a class="nav-link" href="check_job_data.php">Check Job Detail</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="resultsfolder/addresults.php">Add Results</a>
+      </li>
      
     </ul>
     <!-- <form class="form-inline my-2 my-lg-0">
