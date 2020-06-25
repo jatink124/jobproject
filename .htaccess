@@ -22,6 +22,7 @@ RewriteRule  ^jobsindelhi   job-location/Delhi
 RewriteRule  ^jobsinhimachal   ./search/dropdownsearch.php?loc=9
 RewriteRule  ^jobsinBengaluru   job-location/53
 RewriteRule  ^jobsinHyderabad  job-location/41
+RewriteRule  ^jobsinRajasthan  job-location/Rajasthan
 RewriteRule  ^sarkari_noida_jobs ./state/jobsinnoidadet.php
 
 RewriteRule  ^10th-pass-jobs qualification/10th
@@ -50,7 +51,7 @@ RewriteRule  ^manager-jobs ./search/dropdownsearch.php?toj=30
 RewriteRule  ^Data-entry_operator type-of-job/36
 RewriteRule  ^clerk type-of-job/37
 RewriteRule  ^translator-jobs type-of-job/37
-RewriteRule  ^AIIMS-jobs type-of-job/39
+RewriteRule  ^AIIMS-jobs type-of-job/AIIMSjobs
 
 RewriteRule  ^isrojobsdetail ./isro/isrojobsdet.php
 RewriteRule  ^sscjobsdetail ./ssc/sscjobsdet.php
