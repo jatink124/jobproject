@@ -121,8 +121,8 @@ $bname = [];
 $statename=[];
 $qualname=[];
 $tojname=[];
-
-$count = 0;
+$count=0;
+$countt = 0;
 while ($row = $resindex->fetch_assoc()) {
     // $tmming=$row['timming'];
     // echo $row['timming'];
@@ -147,7 +147,9 @@ while ($row = $resindex->fetch_assoc()) {
     $statename[] = $row['statename'];
     $qualname[]=$row['qual'];
     $tojname[]=$row['tojname'];
-    $count++;
+   $count++;
+    $countt++;
 }
 }
+
 ?>

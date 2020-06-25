@@ -14,8 +14,8 @@ class Database{
 	
 	public function connect_db(){
 //  $this->connection = mysqli_connect('148.66.145.152', 'dbdent', 'dbdent', 'mynewdental');
-//$this->connection = mysqli_connect('localhost', 'root', '', 'findsarkarijob');
-$this->connection = mysqli_connect('194.59.164.180', 'u151583556_username_job', 'sarkaridb', 'u151583556_sarkarijob');
+$this->connection = mysqli_connect('localhost', 'root', '', 'findsarkarijob');
+//$this->connection = mysqli_connect('194.59.164.180', 'u151583556_username_job', 'sarkaridb', 'u151583556_sarkarijob');
 
 		if(mysqli_connect_error()){
 			die("Database Connection Failed" . mysqli_connect_error() . mysqli_connect_errno());

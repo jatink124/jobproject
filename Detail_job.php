@@ -4,7 +4,7 @@
 <?php
 // Start the session
 session_start();
-$_SESSION['jobnewdett'];
+// $_SESSION['jobnewdett'];
 ?>
 
 <?php include './include/connectionstring.php' ?>

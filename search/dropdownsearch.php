@@ -114,7 +114,7 @@ select {
 <?php include './search_output.php';?>
 <?php if($anydata==true){ ?>
 <div class="container">
-  <?php $initi=0;$k=3;$n=0;$count=($count/3)?>
+  <?php $initi=0;$k=3;$n=0;$count=round($countt/3)?>
   <?php  for($i=0;$i<=($count);$i++){if (array_key_exists($initi,$imagelink)){?>
   <div class="row">
   <?php for($j=$initi;$j<$k;$j++)
@@ -185,8 +185,8 @@ select {
     // $_COOKIE['jobnewdet']=$jobdetitems;
     // $_SESSION["newsearch"]=$items;
  ?>
- <!-- <script type="text/javascript">var user_id = <?php echo json_encode($_SESSION["searchh"]);?>;
- var search_id = <?php echo json_encode($_SESSION["deptsearch"]);?>;
+ <!-- <script type="text/javascript">var user_id = <?php ?>;
+ var search_id = <?php?>;
  setcookie("deptsearchid",search_id, time() + (86400 * 30), "/");not
 document.cookie = "deptsearchid" + "=" + search_id + (86400 * 30) + "; path=/";
  function createCookie(name, value, days) {

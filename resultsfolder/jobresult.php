@@ -43,7 +43,7 @@ p.card-text {
 </div>
 <?php if($_GET) { $resultqs= $_GET["s"]; } ?>
 <?php if(empty($_GET)) { if($pdfp[$_COOKIE["resultid"]]!='') {?>
-<embed src="resultsfolder/pdf/<?php  echo $pdfp[$_COOKIE["resultid"]]  ?>#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" width="80%" height="400px" /><?php } ?>
+<embed src="resultsfolder/pdf/<?php  echo $pdfp[$_COOKIE["resultid"]]?>#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" width="80%" height="400px" /><?php } ?>
 <h5>Soure of Result:<a href="<?php echo $pdfsrc[$_COOKIE["resultid"]] ?>" target="_blank"><?php echo $postname[$_COOKIE["resultid"]] ?></a></h5><?php } else {?>
 <?php if($pdfp[$resultqs]) {?>
 <embed src="resultsfolder/pdf/<?php echo $pdfp[$resultqs] ?>#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" width="80%" height="400px" /><?php } ?>

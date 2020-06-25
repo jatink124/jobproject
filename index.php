@@ -2,6 +2,7 @@
 // Start the session
 session_start();
 ?>
+<?php include 'insert-mysql-json.php' ?>
 <?php include 'pages/getting_data_json.php' ?>
 <?php include 'include/header.php' ?>
 <?php include './queries/dropdown_state.php'?>

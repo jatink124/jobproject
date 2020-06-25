@@ -1,6 +1,6 @@
 
 <?php
-
+unset($_SESSION['jobnewdett']);
 require_once('database.php');
 $full=array();
 if(!empty($_GET["jd"])){
@@ -44,13 +44,24 @@ if(!empty($_GET["s"])){
         // }
         else if(!empty($_GET["l"])){
             $queryid = $_GET["l"];
-            //  $newqualname =  $_GET['qual'];
-            
-              foreach($_SESSION["jobnewdett"] as $result => $key) {
+            if(isset($_SESSION['jobnewdett'])){
+                foreach($_SESSION["jobnewdett"] as $result => $key) {
                     if(str_replace($tr,"",$key['postname'])==$queryid){
                      $searchbdprevid = $key['id'];
                      $previd=0;
                    }}
+            }
+            else{
+            $str = file_get_contents('tblpost.json');
+            $json = json_decode($str, true);
+            foreach($json as $result => $key) {
+                if(str_replace($tr,"",$key['postname'])==$queryid){
+                 $searchbdprevid = $key['id'];
+                 $previd=0;
+               }}
+            //  $newqualname =  $_GET['qual'];
+            
+            }
             }
 if(isset($_GET['s'])){
     $res = $database->read_tagsdet($bdprevid);
